@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<parameters>
-  <parameter name="IIS Web Application Name" description="" value="darkraven011-001-site1" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^C:\\Users\\Admin\\source\\repos\\Web2T\\Web2T\\obj\\Release\\net7\.0\\win-x86\\PubTmp\\Out\\$" />
-  </parameter>
-  <parameter name="Web2T.Models.DbMarketsContext" description="" value="Data Source=SQL5106.site4now.net;Initial Catalog=db_a9b41f_login;User Id=db_a9b41f_login_admin;Password=blackswan011" tags="dbfullsql">
-    <parameterEntry kind="ProviderPath" scope="dbfullsql" match="^C:\\Users\\Admin\\source\\repos\\Web2T\\Web2T\\obj\\Release\\net7\.0\\win-x86\\PubTmp\\EFSQLScripts\\Web2T\.Models\.DbMarketsContext\.sql$" />
-  </parameter>
-</parameters>
