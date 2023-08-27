@@ -1,0 +1,133 @@
+﻿@model Web2T.Models.Order
+
+@{
+    ViewData["Title"] = "Tạo mới đơn hàng";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="page-header">
+    <div class="header-sub-title">
+        <nav class="breadcrumb breadcrumb-dash">
+            <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="breadcrumb-item"><i class="anticon anticon-home m-r-5"></i>Trang chủ</a>
+            <a class="breadcrumb-item" asp-area="Admin" asp-controller="AdminOrders" asp-action="Index">Danh sách Đơn hàng</a>
+            <span class="breadcrumb-item active">Tạo mới ĐƠN HÀNG</span>
+        </nav>
+    </div>
+</div>
+<form asp-controller="AdminOrders" asp-action="Create" method="post" enctype="multipart/form-data">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="page-header no-gutters has-tab">
+        <div class="d-md-flex m-b-15 align-items-center justify-content-between">
+            <div class="media align-items-center m-b-15">
+            </div>
+            <div class="m-b-15">
+                <button class="btn btn-primary">
+                    <i class="anticon anticon-save"></i>
+                    <span>Thêm Đơn Hàng</span>
+                </button>
+            </div>
+        </div>
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link active" data-toggle="tab" href="#order-edit-basic">THÔNG TIN CƠ BẢN</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" data-toggle="tab" href="#order-edit-option">THÔNG TIN CHI TIẾT</a>
+            </li>
+        </ul>
+    </div>
+    <div class="tab-content m-t-15">
+        <div class="tab-pane fade show active" id="order-edit-basic">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="orderCustomer">Họ và tên khách hàng </label>
+                        <select class="custom-select" asp-for="CustomerId" style="min-width: 300px;" asp-items="ViewBag.CustomerId">
+                            <option value="" disabled selected>Chọn tên khách hàng</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="">Ngày đặt hàng</label>
+                        <div class="input-affix m-b-10">
+                            <i class="prefix-icon anticon anticon-calendar"></i>
+                            <input type="text" class="form-control datepicker-input" placeholder="Chọn ngày đặt hàng" asp-for="OrderDate">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-semibold" for="">Ngày giao hàng</label>
+                            <div class="input-affix m-b-10">
+                                <i class="prefix-icon anticon anticon-calendar"></i>
+                                <input type="text" class="form-control datepicker-input" placeholder="Chọn ngày giao hàng" asp-for="ShipDate">
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="font-weight-semibold" for="orderStatus">Trạng thái đơn hàng</label>
+                            <select class="custom-select" asp-for="TransactStatusId" style="min-width: 200px;" asp-items="ViewBag.TransactStatusId">
+                                <option value="" disabled selected>Chọn trạng thái</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="m-t-25">
+                                <div class="form-group d-flex align-items-center">
+                                    <div class="switch m-r-10">
+                                        <input type="checkbox" asp-for="Deleted">
+                                        <label for="Deleted"></label>
+                                    </div>
+                                    <label>Deleted</label>
+                                </div>
+                                <div class="form-group d-flex align-items-center">
+                                    <div class="switch m-r-10">
+                                        <input type="checkbox" asp-for="Paid">
+                                        <label for="Paid"></label>
+                                    </div>
+                                    <label>Paid</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="order-edit-option">
+            <div class="card">
+                <div class="card-body">
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="">Ngày thanh toán</label>
+                        <div class="input-affix m-b-10">
+                            <i class="prefix-icon anticon anticon-calendar"></i>
+                            <input type="text" class="form-control datepicker-input" placeholder="Chọn ngày đặt hàng" asp-for="PaymentDate">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="totalMoney">Tổng tiền</label>
+                        <input type="text" class="form-control" asp-for="TotalMoney">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="address">Địa chỉ</label>
+                        <input type="text" class="form-control" asp-for="Address">
+                    </div>
+                    <div class="form-group">
+                        <label class="font-weight-semibold" for="Notes">Ghi chú</label>
+                        <input type="text" class="form-control" asp-for="Note">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Quay lại Danh sách</a>
+</div>
+
+@section Scripts {
+    <script src="~/Adminassets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script>
+        jQuery(document).ready(function () {
+            $('.datepicker-input').datepicker();
+        });
+    </script>
+}
+
